@@ -2,6 +2,7 @@ import type { Route } from 'nextjs-routes';
 
 const TEMPLATE_MAP: Record<Route['pathname'], string> = {
   '/': 'blockchain explorer',
+  '/mapper': 'mapper',
   '/txs': 'transactions',
   '/tx/[hash]': 'transaction %hash%',
   '/blocks': 'blocks',

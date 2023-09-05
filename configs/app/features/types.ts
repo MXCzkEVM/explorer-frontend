@@ -1,5 +1,5 @@
-type FeatureEnabled<Payload extends Record<string, unknown> = Record<string, never>> = { title: string; isEnabled: true, isZkProves: boolean } & Payload;
-type FeatureDisabled = { title: string; isEnabled: false, isZkProves: boolean };
+type FeatureEnabled<Payload extends Record<string, unknown> = Record<string, never>> = { title: string; isEnabled: true, isZkProves?: boolean } & Payload;
+type FeatureDisabled = { title: string; isEnabled: false, isZkProves?: boolean };
 
 export type Feature<Payload extends Record<string, unknown> = Record<string, never>> = FeatureEnabled<Payload> | FeatureDisabled;
 

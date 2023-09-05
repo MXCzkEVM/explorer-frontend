@@ -2,6 +2,7 @@ import type { Route } from 'nextjs-routes';
 
 const PAGE_TYPE_DICT: Record<Route['pathname'], string> = {
   '/': 'Homepage',
+  '/mapper': "Mapper",
   '/txs': 'Transactions',
   '/tx/[hash]': 'Transaction details',
   '/blocks': 'Blocks',
@@ -43,6 +44,7 @@ const PAGE_TYPE_DICT: Record<Route['pathname'], string> = {
   '/api/healthz': 'Node API: Health check',
   '/auth/auth0': 'Auth',
   '/auth/unverified-email': 'Unverified email',
+
 };
 
 export default function getPageType(pathname: Route['pathname']) {

@@ -7,6 +7,7 @@ const DEFAULT_TEMPLATE = 'Blockscout is the #1 open-source blockchain explorer a
 // FIXME all page descriptions will be updated later
 const TEMPLATE_MAP: Record<Route['pathname'], string> = {
   '/': DEFAULT_TEMPLATE,
+  '/mapper': DEFAULT_TEMPLATE,
   '/txs': DEFAULT_TEMPLATE,
   '/tx/[hash]': 'View transaction %hash% on %network_title%',
   '/blocks': DEFAULT_TEMPLATE,
@@ -48,6 +49,7 @@ const TEMPLATE_MAP: Record<Route['pathname'], string> = {
   '/api/healthz': DEFAULT_TEMPLATE,
   '/auth/auth0': DEFAULT_TEMPLATE,
   '/auth/unverified-email': DEFAULT_TEMPLATE,
+  
 };
 
 export function make(pathname: Route['pathname']) {

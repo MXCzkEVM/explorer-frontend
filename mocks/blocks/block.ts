@@ -115,7 +115,8 @@ export const base2: Block = {
     },
     {
       reward: '1017432850000000000',
-      type: 'Miner Reward',
+      // type: 'Miner Reward',
+      type: 'Supernode Reward',
     },
     {
       reward: '500000000000000000',
