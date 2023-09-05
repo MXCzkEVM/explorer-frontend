@@ -187,7 +187,8 @@ const AddressDetails = ({ addressQuery, scrollRef }: Props) => {
         { data.has_validated_blocks && (
           <DetailsInfoItem
             title="Blocks validated"
-            hint="Number of blocks validated by this validator"
+            // hint="Number of blocks validated by this validator"
+            hint="Number of blocks validated by this Supernode"
             isLoading={ addressQuery.isPlaceholderData || countersQuery.isPlaceholderData }
           >
             { addressQuery.data ? (

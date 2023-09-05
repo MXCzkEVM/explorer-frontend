@@ -2,7 +2,7 @@ import { Box, Popover, PopoverTrigger, PopoverContent, PopoverBody, useDisclosur
 import _debounce from 'lodash/debounce';
 import { useRouter } from 'next/router';
 import type { FormEvent, FocusEvent } from 'react';
-import React from 'react';
+import React, {useState} from 'react';
 import { Element } from 'react-scroll';
 
 import { route } from 'nextjs-routes';
@@ -16,6 +16,10 @@ import SearchBarInput from './SearchBarInput';
 import SearchBarRecentKeywords from './SearchBarRecentKeywords';
 import SearchBarSuggest from './SearchBarSuggest/SearchBarSuggest';
 import useQuickSearchQuery from './useQuickSearchQuery';
+
+import { dataInit, getMep1002HexagonName } from 'constants/StogeUtils'
+import {getDataMap} from 'constants/H3Utils'
+import { eventBus } from 'lib/eventBus';
 
 type Props = {
   isHomepage?: boolean;
@@ -38,16 +42,33 @@ const SearchBar = ({ isHomepage }: Props) => {
 
   const handleSubmit = React.useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (searchTerm) {
-      const url = route({ pathname: '/search-results', query: { q: searchTerm } });
-      mixpanel.logEvent(mixpanel.EventTypes.SEARCH_QUERY, {
-        'Search query': searchTerm,
-        'Source page type': mixpanel.getPageType(pathname),
-        'Result URL': url,
-      });
-      saveToRecentKeywords(searchTerm);
-      router.push({ pathname: '/search-results', query: { q: searchTerm } }, undefined, { shallow: true });
+    // if (searchTerm) {
+    //   const url = route({ pathname: '/search-results', query: { q: searchTerm } });
+    //   mixpanel.logEvent(mixpanel.EventTypes.SEARCH_QUERY, {
+    //     'Search query': searchTerm,
+    //     'Source page type': mixpanel.getPageType(pathname),
+    //     'Result URL': url,
+    //   });
+    //   saveToRecentKeywords(searchTerm);
+    //   router.push({ pathname: '/search-results', query: { q: searchTerm } }, undefined, { shallow: true });
+    // }
+    if (searchTerm && searchTerm.toLowerCase().includes('.mxc')) {
+      let sendstr = searchTerm.toLowerCase();
+      sendstr = sendstr.replace('.mxc', '');
+      eventBus.emit('mapperPoint', sendstr);
+    } else {
+      if (searchTerm) {
+        const url = route({ pathname: '/search-results', query: { q: searchTerm } });
+        mixpanel.logEvent(mixpanel.EventTypes.SEARCH_QUERY, {
+          'Search query': searchTerm,
+          'Source page type': mixpanel.getPageType(pathname),
+          'Result URL': url,
+        });
+        saveToRecentKeywords(searchTerm);
+        router.push({ pathname: '/search-results', query: { q: searchTerm } }, undefined, { shallow: true });
+      }
     }
+
   }, [ searchTerm, pathname, router ]);
 
   const handleFocus = React.useCallback(() => {
@@ -103,6 +124,16 @@ const SearchBar = ({ isHomepage }: Props) => {
     };
   }, [ calculateMenuWidth ]);
 
+  const [hexNames, setHexName] = useState({});
+  React.useEffect(() => {
+    const fetchData = async () => {
+      await dataInit();
+      let { name2hexId } = await getDataMap();
+      setHexName(name2hexId);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Popover
       isOpen={ isOpen && (searchTerm.trim().length > 0 || recentSearchKeywords.length > 0) }
@@ -156,6 +187,7 @@ const SearchBar = ({ isHomepage }: Props) => {
                 searchTerm={ debouncedSearchTerm }
                 onItemClick={ handleItemClick }
                 containerId={ SCROLL_CONTAINER_ID }
+                hexNames={hexNames}
               />
             ) }
           </Box>

@@ -6,6 +6,8 @@ import breakpoints from 'theme/foundations/breakpoints';
 import Icon from 'ui/shared/chakra/Icon';
 import Hint from 'ui/shared/Hint';
 
+import { ethers } from 'ethers';
+
 type Props = {
   icon: React.FC<React.SVGAttributes<SVGElement>>;
   title: string;
@@ -14,6 +16,8 @@ type Props = {
   tooltipLabel?: React.ReactNode;
   url?: string;
   isLoading?: boolean;
+  showTips?: string;
+  tap?: (title: string, value: any) => void;
 }
 
 const LARGEST_BREAKPOINT = '1240px';
@@ -26,7 +30,7 @@ const TOOLTIP_PROPS: Partial<TooltipProps> = {
   bgColor: 'blackAlpha.900',
 };
 
-const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading }: Props) => {
+const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading, showTips, tap  }: Props) => {
   const sxContainer: SystemStyleObject = {
     [`@media screen and (min-width: ${ breakpoints.lg }) and (max-width: ${ LARGEST_BREAKPOINT })`]: { flexDirection: 'column' },
   };
@@ -39,6 +43,10 @@ const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading
   const loadingBgColor = useColorModeValue('blackAlpha.50', 'whiteAlpha.50');
   const infoColor = useColorModeValue('gray.600', 'gray.400');
 
+  const onOpen = () => {
+    tap?.(title, showTips);
+  };
+
   return (
     <Flex
       backgroundColor={ isLoading ? loadingBgColor : bgColor }
@@ -49,13 +57,21 @@ const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading
       alignItems="center"
       columnGap={ 3 }
       rowGap={ 2 }
-      className={ className }
+      // className={ className }
+      className={`${className} ${showTips ? 'csp' : ''}`}
       color={ useColorModeValue('black', 'white') }
       position="relative"
-      { ...(url && !isLoading ? {
-        as: 'a',
-        href: url,
-      } : {}) }
+      onClick={onOpen}
+      // { ...(url && !isLoading ? {
+      //   as: 'a',
+      //   href: url,
+      // } : {}) }
+      {...(url && !showTips
+        ? {
+            as: 'a',
+            href: url,
+          }
+        : {})}
     >
       <Icon as={ icon } boxSize={ 7 } isLoading={ isLoading } borderRadius="base"/>
       <Flex
@@ -67,7 +83,8 @@ const StatsItem = ({ icon, title, value, className, tooltipLabel, url, isLoading
           <span>{ title }</span>
         </Skeleton>
         <Skeleton isLoaded={ !isLoading } fontWeight={ 500 } fontSize="md" color={ useColorModeValue('black', 'white') } borderRadius="base">
-          <span>{ value }</span>
+          {/* <span>{ value }</span> */}
+          <span>{ ethers.utils.isHexString(value) ? value.substring(0, 14) : value }</span>
         </Skeleton>
       </Flex>
       { tooltipLabel && !isLoading && (

@@ -1,4 +1,4 @@
-import { Icon, Box, Image, useColorModeValue, Skeleton } from '@chakra-ui/react';
+import { Icon, Box, Image, useColorModeValue, Skeleton, Text } from '@chakra-ui/react';
 import React from 'react';
 
 import { route } from 'nextjs-routes';
@@ -6,6 +6,7 @@ import { route } from 'nextjs-routes';
 import config from 'configs/app';
 import iconPlaceholder from 'icons/networks/icon-placeholder.svg';
 import logoPlaceholder from 'icons/networks/logo-placeholder.svg';
+import mxcLogo from 'icons/networks/mxc-white.png';
 
 interface Props {
   isCollapsed?: boolean;
@@ -43,10 +44,10 @@ const LogoFallback = ({ isCollapsed, isSmall }: { isCollapsed?: boolean; isSmall
 
 const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
 
-  const logoSrc = useColorModeValue(config.UI.sidebar.logo.default, config.UI.sidebar.logo.dark || config.UI.sidebar.logo.default);
-  const iconSrc = useColorModeValue(config.UI.sidebar.icon.default, config.UI.sidebar.icon.dark || config.UI.sidebar.icon.default);
+  // const logoSrc = useColorModeValue(config.UI.sidebar.logo.default, config.UI.sidebar.logo.dark || config.UI.sidebar.logo.default);
+  // const iconSrc = useColorModeValue(config.UI.sidebar.icon.default, config.UI.sidebar.icon.dark || config.UI.sidebar.icon.default);
   const darkModeFilter = { filter: 'brightness(0) invert(1)' };
-  const logoStyle = useColorModeValue({}, !config.UI.sidebar.logo.dark ? darkModeFilter : {});
+  // const logoStyle = useColorModeValue({}, !config.UI.sidebar.logo.dark ? darkModeFilter : {});
   const iconStyle = useColorModeValue({}, !config.UI.sidebar.icon.dark ? darkModeFilter : {});
 
   return (
@@ -63,7 +64,7 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
       aria-label="Link to main page"
     >
       { /* big logo */ }
-      <Image
+      {/* <Image
         w="auto"
         h="100%"
         src={ logoSrc }
@@ -71,9 +72,22 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
         fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }
         display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
         style={ logoStyle }
-      />
-      { /* small logo */ }
+      /> */}
       <Image
+        w="auto"
+        h="100%"
+        src={mxcLogo.src}
+        alt={ `${ config.chain.name } network logo` }
+        fallback={<LogoFallback isCollapsed={isCollapsed} />}
+        display={{
+          base: 'block',
+          lg: isCollapsed === false ? 'block' : 'none',
+          xl: isCollapsed ? 'none' : 'block',
+        }}
+      />
+
+      { /* small logo */ }
+      {/* <Image
         w="auto"
         h="100%"
         src={ iconSrc }
@@ -81,7 +95,22 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
         fallback={ <LogoFallback isCollapsed={ isCollapsed } isSmall/> }
         display={{ base: 'none', lg: isCollapsed === false ? 'none' : 'block', xl: isCollapsed ? 'block' : 'none' }}
         style={ iconStyle }
+      /> */}
+      <Image
+        w="auto"
+        h="100%"
+        src={mxcLogo.src}
+        alt={ `${ config.chain.name } network logo` }
+        fallback={<LogoFallback isCollapsed={isCollapsed} isSmall />}
+        display={{
+          base: 'none',
+          lg: isCollapsed === false ? 'none' : 'block',
+          xl: isCollapsed ? 'block' : 'none',
+        }}
       />
+      <Text fontSize="sm" fontFamily="body" ml="1">
+        MXC
+      </Text>
     </Box>
   );
 };

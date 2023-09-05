@@ -25,6 +25,7 @@ import transactionsIcon from 'icons/transactions.svg';
 import txnBatchIcon from 'icons/txn_batches.svg';
 import verifiedIcon from 'icons/verified.svg';
 import watchlistIcon from 'icons/watchlist.svg';
+import hexagon from 'icons/home/hexagon.svg';
 import { rightLineArrow } from 'lib/html-entities';
 import UserAvatar from 'ui/shared/UserAvatar';
 
@@ -138,6 +139,13 @@ export default function useNavItems(): ReturnType {
         icon: globeIcon,
         isActive: blockchainNavItems.flat().some(item => isInternalItem(item) && item.isActive),
         subItems: blockchainNavItems,
+      },
+      {
+        text: 'Mapper',
+        nextRoute: { pathname: '/mapper' as const },
+        icon: hexagon,
+        isActive: pathname.startsWith('/mapper'),
+        isNewUi: true,
       },
       {
         text: 'Tokens',

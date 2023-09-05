@@ -28,7 +28,7 @@ export interface ColorModeTogglerProps
 const ColorModeToggler = forwardRef<ColorModeTogglerProps, 'input'>((props, ref) => {
   const ownProps = omitThemingProps(props);
   const { toggleColorMode, colorMode } = useColorMode();
-
+  
   const {
     state,
     getInputProps,

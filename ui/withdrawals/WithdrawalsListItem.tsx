@@ -40,7 +40,8 @@ const WithdrawalsListItem = ({ item, isLoading, view }: Props) => {
         <Skeleton isLoaded={ !isLoading } display="inline-block">{ item.index }</Skeleton>
       </ListItemMobileGrid.Value>
 
-      <ListItemMobileGrid.Label isLoading={ isLoading }>Validator index</ListItemMobileGrid.Label>
+      {/* <ListItemMobileGrid.Label isLoading={ isLoading }>Validator index</ListItemMobileGrid.Label> */}
+      <ListItemMobileGrid.Label isLoading={ isLoading }>Supernode index</ListItemMobileGrid.Label>
       <ListItemMobileGrid.Value>
         <Skeleton isLoaded={ !isLoading } display="inline-block">{ item.validator_index }</Skeleton>
       </ListItemMobileGrid.Value>

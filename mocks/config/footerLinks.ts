@@ -67,7 +67,8 @@ export const FOOTER_LINKS: Array<CustomLinksGroup> = [
         url: '',
       },
       {
-        text: 'Become validator',
+        // text: 'Become validator',
+        text: 'Become Supernode',
         url: '',
       },
 

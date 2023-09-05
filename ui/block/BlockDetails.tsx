@@ -228,7 +228,8 @@ const BlockDetails = ({ query }: Props) => {
         </DetailsInfoItem>
       ) }
       { data.rewards
-        ?.filter(({ type }) => type !== 'Validator Reward' && type !== 'Miner Reward')
+        // ?.filter(({ type }) => type !== 'Validator Reward' && type !== 'Miner Reward')
+        ?.filter(({ type }) => type !== 'Supernode Reward')
         .map(({ type, reward }) => (
           <DetailsInfoItem
             key={ type }
@@ -332,7 +333,8 @@ const BlockDetails = ({ query }: Props) => {
       { data.priority_fee !== null && BigNumber(data.priority_fee).gt(ZERO) && (
         <DetailsInfoItem
           title="Priority fee / Tip"
-          hint="User-defined tips sent to validator for transaction priority/inclusion"
+          // hint="User-defined tips sent to validator for transaction priority/inclusion"
+          hint="User-defined tips sent to Supernode for transaction priority/inclusion"
           isLoading={ isPlaceholderData }
         >
           <Skeleton isLoaded={ !isPlaceholderData }>

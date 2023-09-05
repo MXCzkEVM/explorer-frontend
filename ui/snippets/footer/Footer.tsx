@@ -18,7 +18,8 @@ import useIssueUrl from 'lib/hooks/useIssueUrl';
 import IndexingAlertIntTxs from 'ui/home/IndexingAlertIntTxs';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
-import ColorModeToggler from '../header/ColorModeToggler';
+import { useColorMode } from '@chakra-ui/react';
+
 import FooterLinkItem from './FooterLinkItem';
 import getApiVersionUrl from './utils/getApiVersionUrl';
 
@@ -27,6 +28,10 @@ const MAX_LINKS_COLUMNS = 3;
 const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
 
 const Footer = () => {
+  const { toggleColorMode, colorMode } = useColorMode();
+  if(colorMode=="light") {
+    toggleColorMode()
+  }
 
   const { data: backendVersionData } = useApiQuery('config_backend_version', {
     queryOptions: {
@@ -95,15 +100,17 @@ const Footer = () => {
     >
       <Box flexGrow="1" mb={{ base: 8, lg: 0 }}>
         <Flex flexWrap="wrap" columnGap={ 8 } rowGap={ 6 }>
-          <ColorModeToggler/>
+          {/* <ColorModeToggler/> */}
           { !config.UI.indexingAlert.isHidden && <IndexingAlertIntTxs/> }
           <NetworkAddToWallet/>
         </Flex>
         <Box mt={{ base: 5, lg: '44px' }}>
-          <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
+          {/* <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link> */}
+          <Link fontSize="xs" href="https://www.blockscout.com">https://www.mxc.org</Link>
         </Box>
         <Text mt={ 3 } maxW={{ base: 'unset', lg: '470px' }} fontSize="xs">
-            Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.
+            {/* Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks. */}
+            MXC zkEVM is a IoT focused ZK-Rollup on the top of Arbitrum. BlockscoutV2 provided support for the Wannsee explorer.
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (

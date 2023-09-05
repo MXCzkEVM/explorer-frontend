@@ -25,7 +25,11 @@
     "test:pw:docker": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.35.1-focal ./playwright/run-tests.sh",
     "test:pw:ci": "yarn test:pw --project=$PW_PROJECT",
     "test:jest": "jest",
-    "test:jest:watch": "jest --watch"
+    "test:jest:watch": "jest --watch",
+    "dev:wannsee": "./node_modules/.bin/dotenv -e ./configs/envs/.env.wannsee -e ./configs/envs/.env.secrets -- bash -c 'next dev -- -p \"$NEXT_PUBLIC_APP_PORT\"' | ./node_modules/.bin/pino-pretty",
+    "dev:wannsee_mainnet": "./node_modules/.bin/dotenv -e ./configs/envs/.env.wannsee_mainnet -e ./configs/envs/.env.secrets -- bash -c 'next dev -- -p \"$NEXT_PUBLIC_APP_PORT\"' | ./node_modules/.bin/pino-pretty",
+    "vercel:mainnet": "cp vercel.mainnet.json .vercel/project.json && cp configs/envs/.env.wannsee_mainnet .env && vercel --prod",
+    "vercel:testnet": "cp vercel.testnet.json .vercel/project.json && cp configs/envs/.env.wannsee .env && vercel --prod"
   },
   "dependencies": {
     "@chakra-ui/react": "2.7.1",
@@ -79,9 +83,21 @@
     "swagger-ui-react": "^5.1.0",
     "use-font-face-observer": "^1.2.1",
     "viem": "^1.1.8",
-    "wagmi": "^1.3.3"
+    "wagmi": "^1.3.3",
+    "ethers": "5",
+    "geojson2h3": "^1.2.0",
+    "h3-js": "^4.1.0",
+    "@thirdweb-dev/react": "^3.14.9",
+    "@thirdweb-dev/sdk": "^3.10.29",
+    "jquery": "^3.7.0",
+    "react-leaflet": "^4.2.1",
+    "leaflet": "^1.9.3",
+    "localforage": "^1.10.0",
+    "react-icons": "^4.8.0",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.3",
     "@playwright/experimental-ct-react": "1.35.1",
     "@playwright/test": "^1.35.1",
     "@svgr/webpack": "^6.5.1",
@@ -128,7 +144,8 @@
     "typescript": "^5.1.0",
     "vite-plugin-svgr": "^2.2.2",
     "vite-tsconfig-paths": "^3.5.2",
-    "ws": "^8.11.0"
+    "ws": "^8.11.0",
+    "sass": "^1.62.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix"

@@ -23,7 +23,8 @@ export const BLOCK: Block = {
   rewards: [
     {
       reward: '19241635454943109',
-      type: 'Validator Reward',
+      // type: 'Validator Reward',
+      type: 'Supernode Reward',
     },
   ],
   size: 46406,

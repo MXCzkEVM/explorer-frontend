@@ -33,7 +33,8 @@ export const base: Block = {
     },
     {
       reward: '1026853607500000000',
-      type: 'Validator Reward',
+      // type: 'Validator Reward',
+      type: 'Supernode Reward',
     },
     {
       reward: '500000000000000000',

@@ -14,6 +14,7 @@ import { HOMEPAGE_STATS } from 'stubs/stats';
 
 import StatsGasPrices from './StatsGasPrices';
 import StatsItem from './StatsItem';
+import StatsMore from './StatsMore';
 
 const hasGasTracker = config.UI.homepage.showGasTracker;
 const hasAvgBlockTime = config.UI.homepage.showAvgBlockTime;
@@ -83,6 +84,7 @@ const Stats = () => {
             isLoading={ isPlaceholderData }
           />
         ) }
+        <StatsMore />
       </>
     );
   }

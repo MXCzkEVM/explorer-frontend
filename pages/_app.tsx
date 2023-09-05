@@ -20,6 +20,11 @@ import Layout from 'ui/shared/layout/Layout';
 
 import 'lib/setLocale';
 
+import 'styles/index.scss';
+import 'styles/mapper.scss';
+import 'styles/page.scss';
+
+
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 }

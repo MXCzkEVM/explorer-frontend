@@ -2,19 +2,36 @@ import { Heading } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
-import useHasAccount from 'lib/hooks/useHasAccount';
-import LatestDeposits from 'ui/home/LatestDeposits';
+// import useHasAccount from 'lib/hooks/useHasAccount';
+// import LatestDeposits from 'ui/home/LatestDeposits';
 import LatestTxs from 'ui/home/LatestTxs';
-import LatestWatchlistTxs from 'ui/home/LatestWatchlistTxs';
+// import LatestWatchlistTxs from 'ui/home/LatestWatchlistTxs';
 import TabsWithScroll from 'ui/shared/Tabs/TabsWithScroll';
+import ZkProofs from 'ui/home/ZkProofs';
 
 const TransactionsHome = () => {
-  const hasAccount = useHasAccount();
-  if (config.features.rollup.isEnabled || hasAccount) {
+  // const hasAccount = useHasAccount();
+  // if (config.features.rollup.isEnabled || hasAccount) {
+  //   const tabs = [
+  //     { id: 'txn', title: 'Latest txn', component: <LatestTxs/> },
+  //     config.features.rollup.isEnabled && { id: 'deposits', title: 'Deposits (L1→L2 txn)', component: <LatestDeposits/> },
+  //     hasAccount && { id: 'watchlist', title: 'Watch list', component: <LatestWatchlistTxs/> },
+  //   ].filter(Boolean);
+  //   return (
+  //     <>
+  //       <Heading as="h4" size="sm" mb={ 4 }>Transactions</Heading>
+  //       <TabsWithScroll tabs={ tabs } lazyBehavior="keepMounted"/>
+  //     </>
+  //   );
+  // }
+  if (config.features.rollup.isZkProves) {
     const tabs = [
       { id: 'txn', title: 'Latest txn', component: <LatestTxs/> },
-      config.features.rollup.isEnabled && { id: 'deposits', title: 'Deposits (L1→L2 txn)', component: <LatestDeposits/> },
-      hasAccount && { id: 'watchlist', title: 'Watch list', component: <LatestWatchlistTxs/> },
+      {
+        id: 'zkproofs',
+        title: 'zk Proofs',
+        component: <ZkProofs />,
+      },
     ].filter(Boolean);
     return (
       <>

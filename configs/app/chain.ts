@@ -10,6 +10,7 @@ const chain = Object.freeze({
     name: getEnvValue(process.env.NEXT_PUBLIC_NETWORK_CURRENCY_NAME),
     symbol: getEnvValue(process.env.NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL),
     decimals: Number(getEnvValue(process.env.NEXT_PUBLIC_NETWORK_CURRENCY_DECIMALS)) || DEFAULT_CURRENCY_DECIMALS,
+    address: getEnvValue(process.env.NEXT_PUBLIC_NETWORK_TOKEN_ADDRESS),
   },
   rpcUrl: getEnvValue(process.env.NEXT_PUBLIC_NETWORK_RPC_URL),
   isTestnet: getEnvValue(process.env.NEXT_PUBLIC_IS_TESTNET) === 'true',

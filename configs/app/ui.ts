@@ -6,7 +6,8 @@ import * as views from './ui/views';
 import { getEnvValue, parseEnvJson } from './utils';
 
 // eslint-disable-next-line max-len
-const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, rgba(183, 148, 244, 0.8) 0%, rgba(0, 163, 196, 0.8) 100%), var(--chakra-colors-blue-400)';
+// const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, rgba(183, 148, 244, 0.8) 0%, rgba(0, 163, 196, 0.8) 100%), var(--chakra-colors-blue-400)';
+const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, #8F2F79 0%, #4310B4 100%), var(--chakra-colors-blue-400)';
 
 const UI = Object.freeze({
   sidebar: {
@@ -34,6 +35,12 @@ const UI = Object.freeze({
     },
     showGasTracker: getEnvValue(process.env.NEXT_PUBLIC_HOMEPAGE_SHOW_GAS_TRACKER) === 'false' ? false : true,
     showAvgBlockTime: getEnvValue(process.env.NEXT_PUBLIC_HOMEPAGE_SHOW_AVG_BLOCK_TIME) === 'false' ? false : true,
+  },
+  statusPage: {
+    l1RPC: getEnvValue(process.env.NEXT_PUBLIC_L1_RPC_URL) || '',
+    l1Address: getEnvValue(process.env.NEXT_PUBLIC_L1_ADDRESS) || '',
+    l2Address: getEnvValue(process.env.NEXT_PUBLIC_L2_ADDRESS) || '',
+    oracleAddress: getEnvValue(process.env.NEXT_PUBLIC_ORACLE_ADDRESS) || '',
   },
   views,
   indexingAlert: {

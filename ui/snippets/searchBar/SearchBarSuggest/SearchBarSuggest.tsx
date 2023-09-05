@@ -22,9 +22,10 @@ interface Props {
   searchTerm: string;
   onItemClick: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   containerId: string;
+  hexNames: any;
 }
 
-const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props) => {
+const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId, hexNames }: Props) => {
   const isMobile = useIsMobile();
 
   const marketplaceApps = useMarketplaceApps(searchTerm);
@@ -103,6 +104,31 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
       return <ContentLoader text="We are searching, please wait... " fontSize="sm"/>;
     }
 
+    let isEns;
+    let mns_num = 0;
+    let st = searchTerm && searchTerm.toLowerCase();
+    if (st.includes('.mxc')) {
+      isEns = true;
+    }
+    st = st.replace('.mxc', '');
+    if (hexNames[st]) {
+      mns_num = 1;
+    }
+
+    if (isEns) {
+      return (
+        <>
+          <Text fontWeight={500} fontSize="sm">
+            Found{' '}
+            <Text fontWeight={700} as="span">
+              {mns_num}
+            </Text>{' '}
+            matching mns location
+          </Text>
+        </>
+      );
+    }
+
     if (query.isError) {
       return <Text>Something went wrong. Try refreshing the page or come back later.</Text>;
     }
@@ -112,6 +138,7 @@ const SearchBarSuggest = ({ query, searchTerm, onItemClick, containerId }: Props
     }
 
     const resultCategories = searchCategories.filter(cat => itemsGroups[cat.id]);
+
 
     return (
       <>

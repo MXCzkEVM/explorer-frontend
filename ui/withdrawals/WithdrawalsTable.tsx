@@ -36,7 +36,8 @@ const WithdrawalsTable = ({ items, isLoading, top, view = 'list' }: Props) => {
       <Thead top={ top }>
         <Tr>
           <Th minW="140px">Index</Th>
-          <Th minW="200px">Validator index</Th>
+          {/* <Th minW="200px">Validator index</Th> */}
+          <Th minW="200px">Supernode index</Th>
           { view !== 'block' && <Th w="25%">Block</Th> }
           { view !== 'address' && <Th w="25%">To</Th> }
           { view !== 'block' && <Th w="25%">Age</Th> }
