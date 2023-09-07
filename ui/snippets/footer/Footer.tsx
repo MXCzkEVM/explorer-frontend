@@ -29,7 +29,8 @@ const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config
 
 const Footer = () => {
   const { toggleColorMode, colorMode } = useColorMode();
-  if(colorMode=="light") {
+  
+  if(typeof window !== 'undefined' && colorMode=="light") {
     toggleColorMode()
   }
 
@@ -106,11 +107,11 @@ const Footer = () => {
         </Flex>
         <Box mt={{ base: 5, lg: '44px' }}>
           {/* <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link> */}
-          <Link fontSize="xs" href="https://www.blockscout.com">https://www.mxc.org</Link>
+          <Link fontSize="xs" href="https://www.mxc.org">https://www.mxc.org</Link>
         </Box>
         <Text mt={ 3 } maxW={{ base: 'unset', lg: '470px' }} fontSize="xs">
             {/* Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks. */}
-            MXC zkEVM is a IoT focused ZK-Rollup on the top of Arbitrum. BlockscoutV2 provided support for the Wannsee explorer.
+            {config.UI.document.description}
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (

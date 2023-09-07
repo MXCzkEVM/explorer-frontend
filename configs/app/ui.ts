@@ -10,6 +10,10 @@ import { getEnvValue, parseEnvJson } from './utils';
 const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, #8F2F79 0%, #4310B4 100%), var(--chakra-colors-blue-400)';
 
 const UI = Object.freeze({
+  document: {
+    title: getEnvValue(process.env.NEXT_PUBLIC_TITLE),
+    description: getEnvValue(process.env.NEXT_PUBLIC_DESC)
+  },
   sidebar: {
     logo: {
       'default': getEnvValue(process.env.NEXT_PUBLIC_NETWORK_LOGO),

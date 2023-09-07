@@ -26,6 +26,7 @@ class MyDocument extends Document {
     return initialProps;
   }
 
+
   render() {
     return (
       <Html lang="en">
@@ -56,12 +57,12 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png"/>
           <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5"/>
           {/* <meta property="og:title" content="Blockscout: A block explorer designed for a decentralized world."/> */}
-          <meta property="og:title" content="zkEVM, Mainnet L3, blockchain, api, analytics, address, smart contract"/>
+          <meta property="og:title" content={config.UI.document.title}/>
           <meta
             property="og:description"
             // eslint-disable-next-line max-len
             // content="Blockscout is the #1 open-source blockchain explorer available today. 100+ chains and counting rely on Blockscout data availability, APIs, and ecosystem tools to support their networks."
-            content='MXC zkEVM is a IoT focused ZK-Rollup on the top of Arbitrum. BlockscoutV2 provided support for the Wannsee explorer.'
+            content={config.UI.document.description}
           />
           <meta property="og:image" content={ config.app.baseUrl + '/static/og.png' }/>
           <meta property="og:site_name" content="Blockscout"/>

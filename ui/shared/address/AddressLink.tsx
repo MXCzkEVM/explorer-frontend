@@ -36,6 +36,15 @@ type AddressTokenProps = {
 
 type Props = CommonProps & (AddressTokenTxProps | AddressTokenProps);
 
+function replaceText(originalText:string, rules:any) {
+  let result = originalText;
+  for (let rule of rules) {
+    result = result.replace(rule.target, rule.replacement);
+  }
+  return result;
+}
+
+
 /**
  * @deprecated use `ui/shared/entities/**` instead
  */
@@ -54,10 +63,20 @@ const AddressLink = (props: Props) => {
 
   const content = (() => {
     if (alias) {
-      const text = <Box overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{ alias }</Box>;
+      let rules:any = [
+        {target: /Wannsee/g, replacement: "zkEVM"},
+        {target: /WNS/g, replacement: "ZKEVM"},
+      ];
+      let updatedText = replaceText(alias, rules);
+      console.log(updatedText,"updatedText")
+      // const text = <Box overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{ alias }</Box>;
+      const text = <Box overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{ updatedText }</Box>;
+
       if (type === 'token' || type === 'address_token') {
-        return <TruncatedValue value={ alias } display="block"/>;
+        // return <TruncatedValue value={ alias } display="block"/>;
+        return <TruncatedValue value={ updatedText } display="block"/>;
       }
+      
       return (
         <Tooltip label={ hash } isDisabled={ isMobile }>
           { text }
