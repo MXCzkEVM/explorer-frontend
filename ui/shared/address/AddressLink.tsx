@@ -10,6 +10,8 @@ import HashStringShortenDynamic from 'ui/shared/HashStringShortenDynamic';
 import LinkInternal from 'ui/shared/LinkInternal';
 import TruncatedValue from 'ui/shared/TruncatedValue';
 
+import {replaceRules, replaceText} from 'constants/Local'
+
 type CommonProps = {
   className?: string;
   truncation?: 'constant' | 'dynamic'| 'none';
@@ -36,13 +38,6 @@ type AddressTokenProps = {
 
 type Props = CommonProps & (AddressTokenTxProps | AddressTokenProps);
 
-function replaceText(originalText:string, rules:any) {
-  let result = originalText;
-  for (let rule of rules) {
-    result = result.replace(rule.target, rule.replacement);
-  }
-  return result;
-}
 
 
 /**
@@ -63,12 +58,7 @@ const AddressLink = (props: Props) => {
 
   const content = (() => {
     if (alias) {
-      let rules:any = [
-        {target: /Wannsee/g, replacement: "zkEVM"},
-        {target: /WNS/g, replacement: "ZKEVM"},
-      ];
-      let updatedText = replaceText(alias, rules);
-      console.log(updatedText,"updatedText")
+      let updatedText = replaceText(alias, replaceRules);
       // const text = <Box overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{ alias }</Box>;
       const text = <Box overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{ updatedText }</Box>;
 

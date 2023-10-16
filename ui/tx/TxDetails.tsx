@@ -50,6 +50,8 @@ import TxDetailsTokenTransfers from 'ui/tx/details/TxDetailsTokenTransfers';
 import TxRevertReason from 'ui/tx/details/TxRevertReason';
 import TxSocketAlert from 'ui/tx/TxSocketAlert';
 import useFetchTxInfo from 'ui/tx/useFetchTxInfo';
+import {replaceRules, replaceText} from 'constants/Local'
+
 
 const TxDetails = () => {
   const { data, isPlaceholderData, isError, socketStatus, error } = useFetchTxInfo();
@@ -152,7 +154,8 @@ const TxDetails = () => {
           <TxStatus status={ data.status } errorText={ data.status === 'error' ? data.result : undefined } isLoading={ isPlaceholderData }/>
           { data.method && (
             <Tag colorScheme={ data.method === 'Multicall' ? 'teal' : 'gray' } isLoading={ isPlaceholderData } isTruncated ml={ 3 }>
-              { data.method }
+              {/* { data.method } */}
+              { replaceText(data.method, replaceRules) }
             </Tag>
           ) }
         </DetailsInfoItem>
@@ -258,7 +261,9 @@ const TxDetails = () => {
                   <CopyToClipboard text={ toAddress.hash }/>
                 </Flex>
               ) }
-              { toAddress.name && <TruncatedValue value={ toAddress.name }/> }
+              {/* { toAddress.name && <TruncatedValue value={  toAddress.name }/> } */}
+              { toAddress.name && <TruncatedValue value={ replaceText(toAddress.name, replaceRules)  }/> }
+              
               { addressToTags.length > 0 && (
                 <Flex columnGap={ 3 }>
                   { addressToTags }

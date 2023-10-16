@@ -30,6 +30,8 @@ import TxAdditionalInfo from 'ui/txs/TxAdditionalInfo';
 
 import TxType from './TxType';
 
+import {replaceRules, replaceText} from 'constants/Local'
+
 type Props = {
   tx: Transaction;
   showBlockInfo: boolean;
@@ -44,6 +46,10 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
   const isIn = Boolean(currentAddress && currentAddress === dataTo?.hash);
 
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
+
+  if(tx.method) {
+    tx.method = replaceText(tx.method, replaceRules)
+  }
 
   const addressFrom = (
     <Address w="100%">

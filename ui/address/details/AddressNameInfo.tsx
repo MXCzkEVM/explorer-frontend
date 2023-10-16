@@ -5,6 +5,7 @@ import type { Address } from 'types/api/address';
 
 import DetailsInfoItem from 'ui/shared/DetailsInfoItem';
 import TokenSnippet from 'ui/shared/TokenSnippet/TokenSnippet';
+import {replaceRules, replaceText} from 'constants/Local'
 
 interface Props {
   data: Pick<Address, 'name' | 'token' | 'is_contract'>;
@@ -25,6 +26,7 @@ const AddressNameInfo = ({ data, isLoading }: Props) => {
   }
 
   if (data.is_contract && data.name) {
+    let updatedText = replaceText(data.name, replaceRules);
     return (
       <DetailsInfoItem
         title="Contract name"
@@ -32,7 +34,8 @@ const AddressNameInfo = ({ data, isLoading }: Props) => {
         isLoading={ isLoading }
       >
         <Skeleton isLoaded={ !isLoading }>
-          { data.name }
+          {/* { data.name } */}
+          {updatedText}
         </Skeleton>
       </DetailsInfoItem>
     );

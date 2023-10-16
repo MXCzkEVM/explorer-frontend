@@ -50,5 +50,5 @@ export function make(pathname: Route['pathname']) {
   const template = TEMPLATE_MAP[pathname];
 
   // return `%network_name% ${ template } | Blockscout`;
-  return `%network_name% ${ template } | Explore`;
+  return `%network_name% ${ template }`;
 }

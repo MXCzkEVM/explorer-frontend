@@ -7,7 +7,7 @@ import testnetIcon from 'icons/testnet.svg';
 import NavigationMobile from 'ui/snippets/navigation/NavigationMobile';
 import NetworkLogo from 'ui/snippets/networkMenu/NetworkLogo';
 // import NetworkMenuButton from 'ui/snippets/networkMenu/NetworkMenuButton';
-// import NetworkMenuContentMobile from 'ui/snippets/networkMenu/NetworkMenuContentMobile';
+import NetworkMenuContentMobile from 'ui/snippets/networkMenu/NetworkMenuContentMobile';
 import useNetworkMenu from 'ui/snippets/networkMenu/useNetworkMenu';
 
 const Burger = () => {
@@ -55,7 +55,7 @@ const Burger = () => {
                 />
               ) : <Box boxSize={ 9 }/> } */}
             </Flex>
-            {/* { networkMenu.isOpen ? <NetworkMenuContentMobile tabs={ networkMenu.availableTabs } items={ networkMenu.data }/> : <NavigationMobile/> } */}
+            { networkMenu.isOpen ? <NetworkMenuContentMobile tabs={ networkMenu.availableTabs } items={ networkMenu.data }/> : <NavigationMobile/> }
           </DrawerBody>
         </DrawerContent>
       </Drawer>

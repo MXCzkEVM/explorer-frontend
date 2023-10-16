@@ -16,7 +16,7 @@ import useApiQuery from 'lib/api/useApiQuery';
 import useFetch from 'lib/hooks/useFetch';
 import useIssueUrl from 'lib/hooks/useIssueUrl';
 import IndexingAlertIntTxs from 'ui/home/IndexingAlertIntTxs';
-import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
+// import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
 import { useColorMode } from '@chakra-ui/react';
 
@@ -52,31 +52,36 @@ const Footer = () => {
       icon: cannyIcon,
       iconSize: '20px',
       text: 'Feature request',
-      url: 'https://blockscout.canny.io/feature-requests',
+      // url: 'https://blockscout.canny.io/feature-requests',
+      url: 'https://t.me/mxcchatgpt_bot',
     },
     {
       icon: gitIcon,
       iconSize: '18px',
       text: 'Contribute',
-      url: 'https://github.com/blockscout/blockscout',
+      // url: 'https://github.com/blockscout/blockscout',
+      url: 'https://github.com/MXCzkEVM/blockscount-frontend',
     },
     {
       icon: twitterIcon,
       iconSize: '18px',
       text: 'Twitter',
-      url: 'https://www.twitter.com/blockscoutcom',
+      // url: 'https://www.twitter.com/blockscoutcom',
+      url: 'https://twitter.com/MXCfoundation',
     },
     {
       icon: discordIcon,
       iconSize: '18px',
       text: 'Discord',
-      url: 'https://discord.gg/blockscout',
+      // url: 'https://discord.gg/blockscout',
+      url: 'https://discord.com/invite/mxcfoundation',
     },
     {
       icon: discussionsIcon,
       iconSize: '20px',
       text: 'Discussions',
-      url: 'https://github.com/orgs/blockscout/discussions',
+      // url: 'https://github.com/orgs/blockscout/discussions',
+      url: 'https://t.me/mxcchatgpt_bot',
     },
   ];
 
@@ -103,7 +108,7 @@ const Footer = () => {
         <Flex flexWrap="wrap" columnGap={ 8 } rowGap={ 6 }>
           {/* <ColorModeToggler/> */}
           { !config.UI.indexingAlert.isHidden && <IndexingAlertIntTxs/> }
-          <NetworkAddToWallet/>
+          {/* <NetworkAddToWallet/> */}
         </Flex>
         <Box mt={{ base: 5, lg: '44px' }}>
           {/* <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link> */}

@@ -16,11 +16,26 @@ function isChartNameMatches(q: string, chart: StatsChartInfo) {
 }
 
 export default function useStats() {
-  const { data, isPlaceholderData, isError } = useApiQuery('stats_lines', {
+  let { data, isPlaceholderData, isError } = useApiQuery('stats_lines', {
     queryOptions: {
       placeholderData: STATS_CHARTS,
     },
   });
+
+  // ==========hard code============
+  let newsec:any = data?.sections.map(item=>{
+    item.charts.map(chartItem=>{
+      console.log(chartItem)
+      chartItem.description = chartItem.description.replace("ETH","MXC")
+      if(chartItem.units=="ETH") {
+        chartItem.units = "MXC"
+      }
+      return chartItem
+    })
+    return item
+  })
+  data = {sections: newsec}
+  // ==========hard code============
 
   const [ currentSection, setCurrentSection ] = useState('all');
   const [ filterQuery, setFilterQuery ] = useState('');

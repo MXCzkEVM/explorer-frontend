@@ -26,14 +26,17 @@ export const STATS_CHARTS_SECTION: StatsChartsSection = {
     {
       id: 'chart_0',
       title: 'Average transaction fee',
-      description: 'The average amount in ETH spent per transaction',
-      units: 'ETH',
+      // description: 'The average amount in ETH spent per transaction',
+      description: 'The average amount in MXC spent per transaction',
+      // units: 'ETH',
+      units: 'MXC',
     },
     {
       id: 'chart_1',
       title: 'Transactions fees',
       description: 'Amount of tokens paid as fees',
-      units: 'ETH',
+      // units: 'ETH',
+      units: 'MXC',
     },
     {
       id: 'chart_2',
@@ -51,7 +54,7 @@ export const STATS_CHARTS_SECTION: StatsChartsSection = {
 };
 
 export const STATS_CHARTS = {
-  sections: [ STATS_CHARTS_SECTION ],
+  sections: [STATS_CHARTS_SECTION],
 };
 
 export const STATS_COUNTER: Counter = {
