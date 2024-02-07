@@ -31,18 +31,19 @@ import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
 } from 'react-icons/ai';
-import {getMep1002HexagonName, getGeoHexagon, dataInit, 
+import {
+  getMep1002HexagonName, getGeoHexagon, dataInit,
   getMep1004, getGeoHexagonCache, getMep1004Miners, getNFTProof
 } from 'constants/StogeUtils'
-import {getDataMap, getGeoHex} from 'constants/H3Utils'
+import { getDataMap, getGeoHex } from 'constants/H3Utils'
 import { instanceMep1004 } from 'constants/Address'
 
 import 'leaflet/dist/leaflet.css';
 
 const DarkMatter =
-    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 const Voyage =
-    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+  'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 
 var timerMap: any = {};
 var timoutMap: any = {};
@@ -69,14 +70,14 @@ const Mapper = () => {
   // let mep1004 = mapperUtils.mep1004Contract();
   const [mep1004Show, setMep1004Show] = useState(true);
   const [mepNftShow, setMepNftShow] = useState(true);
-  
+
 
   useEffect(() => {
     const fetchData = async () => {
       await dataInit();
 
       // get hexagon bind name => mapper data
-      let hexagonsName:any = await getMep1002HexagonName();
+      let hexagonsName: any = await getMep1002HexagonName();
 
       // get hexagon data => mapper data
       await getGeoHexagon()
@@ -116,9 +117,9 @@ const Mapper = () => {
     // load the query, if have domain should flyto
     let get_hexId = query.hexid && query.hexid.toLowerCase();
     let get_mns = query.mns && query.mns.toLowerCase();
-    
 
-    const fetchData = async()=>{
+
+    const fetchData = async () => {
       let { hexId2loc, ens2loc } = await getDataMap();
       if (Map && get_hexId && hexId2loc[get_hexId]) {
         Map.flyTo(hexId2loc[get_hexId], 12);
@@ -131,10 +132,19 @@ const Mapper = () => {
 
     fetchData()
 
-    
+
   }, [query]);
 
-  const handleMapperFly = async(data: any) => {
+  useEffect(() => {
+    if (!vertex.length || !router.query.hexagon)
+      return
+    const hexagon = router.query.hexagon as string
+    const feature = vertex.find(v => v.id === hexagon)
+    if (feature)
+      handleFeatureClick({ target: { feature } })
+  }, [vertex, router.query.hexagon])
+
+  const handleMapperFly = async (data: any) => {
     let { ens2loc } = await getDataMap();
     if (Map && ens2loc[data]) {
       Map.flyTo(ens2loc[data], 12);
@@ -184,7 +194,7 @@ const Mapper = () => {
     }, 5 * 60 * 1000);
   };
 
-  
+
 
   const toggle1004 = () => {
     setMep1004Show(!mep1004Show);
@@ -206,7 +216,6 @@ const Mapper = () => {
     // const MEP1002TokenId = { _hex: `0x${feature.id}` };
     // mep1004Listen(MEP1002TokenId);
     // return;
-
     setShowBox(true);
     setCardLoading(true);
 
@@ -230,7 +239,7 @@ const Mapper = () => {
     let transactionHash = feature.transactionHash;
     if (!feature.transactionHash) {
       let vertexFeatures: any = await getGeoHexagonCache()
-      vertexFeatures.map((item:any) => {
+      vertexFeatures.map((item: any) => {
         const decimalNum = BigNumber.from(item.tokenId);
         let hexNum = decimalNum.toHexString();
         let hexId = hexNum.replace('0x', '');
