@@ -22,7 +22,7 @@ import {
   // Pane,
 } from 'react-leaflet';
 import L from 'leaflet';
-import { latLngToCell } from 'h3-js';
+import { cellToLatLng, latLngToCell } from 'h3-js';
 import { IoCellularOutline } from 'react-icons/io5';
 import { MdOutlineSensors } from 'react-icons/md';
 import { eventBus } from 'lib/eventBus';
@@ -139,9 +139,14 @@ const Mapper = () => {
     if (!vertex.length || !router.query.hexagon)
       return
     const hexagon = router.query.hexagon as string
-    const feature = vertex.find(v => v.id === hexagon)
+    const zHexagon = hexagon.startsWith('0') ? hexagon : hexagon
+    const feature = vertex.find(v => v.id.toLowerCase() === zHexagon.toLowerCase())
     if (feature)
       handleFeatureClick({ target: { feature } })
+    else {
+      const [lat, lng] = cellToLatLng(hexagon);
+      onClickMap({ latlng: {lat, lng} })
+    }
   }, [vertex, router.query.hexagon])
 
   const handleMapperFly = async (data: any) => {
@@ -212,10 +217,6 @@ const Mapper = () => {
     let { hexId2name } = await getDataMap();
     const feature = e.target.feature;
 
-    // mock newlocation
-    // const MEP1002TokenId = { _hex: `0x${feature.id}` };
-    // mep1004Listen(MEP1002TokenId);
-    // return;
     setShowBox(true);
     setCardLoading(true);
 
@@ -254,25 +255,26 @@ const Mapper = () => {
   const [Zoom, setZoom] = useState(12);
   var Map: any;
 
+  function onClickMap(e: any) {
+    let nodeName = e.originalEvent?.target?.nodeName;
+    if (nodeName?.toLowerCase() == 'path') {
+      return;
+    }
+    // get hexId
+    setShowBox(true);
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    const res = 7;
+    let hexId = latLngToCell(lat, lng, res);
+    setCardLoading(false);
+    setMiners([]);
+    setNFTs([]);
+    setHexTitle(hexId);
+  }
+
   const MapEvents = () => {
     Map = useMapEvents({
-      click(e: any) {
-        let nodeName = e.originalEvent.target.nodeName;
-        if (nodeName.toLowerCase() == 'path') {
-          return;
-        }
-        // get hexId
-        setShowBox(true);
-
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
-        const res = 7;
-        let hexId = latLngToCell(lat, lng, res);
-        setCardLoading(false);
-        setMiners([]);
-        setNFTs([]);
-        setHexTitle(hexId);
-      },
+      click: onClickMap,
       zoomstart() {
         setShowMap(false);
       },
