@@ -81,7 +81,6 @@ const Mapper = () => {
             let hexagonsName: any = await getMep1002HexagonName();
 
             // get hexagon data => mapper data
-            await getGeoHexagon();
             let getVertex = getGeoHex(await getGeoHexagon());
             setVertexs(getVertex);
             addToGeoJsonKey(geoJsonKey + 1);

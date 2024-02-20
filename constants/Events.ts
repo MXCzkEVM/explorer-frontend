@@ -100,11 +100,16 @@ export const mep1002TransferEvent = async (readCache=false) => {
     let mep1002 = instanceMep1002()
     let latestBlock = await PROVIDER.getBlockNumber();
     const eventFilter = mep1002.filters.Transfer()
-    let events: any = await mep1002.queryFilter(
+    
+    let events: any = []
+    if (latestBlock > blockStart) {
+      events = await mep1002.queryFilter(
         eventFilter,
         blockStart,
         latestBlock
-    )
+      )
+    }
+
     events = events.map((item:any)=>{
         const tokenId = item?.args && item.args['tokenId'].toString();
         const transactionHash = item?.args && item['transactionHash']
