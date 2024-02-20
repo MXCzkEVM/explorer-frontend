@@ -19,8 +19,10 @@ import networkIcon from 'icons/networks.svg';
 import profileIcon from 'icons/profile.svg';
 import abiIcon from 'icons/ABI.svg';
 import flameIcon from 'icons/flame.svg';
-import appConfig from 'configs/app';
-import MXCL1 from 'constants/abi/MXCL1';
+// import appConfig from 'configs/app';
+// import MXCL1 from 'constants/abi/MXCL1';
+import {mxczkevmClient} from "constants/graphClient"
+import {getMXCBurn} from 'constants/graphql/mxczkevm'
 
 import {
   contractL1, contractL2, l1Provider, l2Provider, l1_Address, oracle_address,
@@ -137,6 +139,18 @@ const StatsMore = () => {
     };
   }, []);
 
+  const [burnsTotal, setBurnsTotal] = useState("0")
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await mxczkevmClient.query({
+        query: getMXCBurn(),
+      })
+      let burns = result?.data?.bundle.burn || 0      
+      setBurnsTotal(parseInt(burns).toString())
+    }
+    fetchData()
+  }, [])
+
   return (
     <>
       <AlertDialog
@@ -197,11 +211,19 @@ const StatsMore = () => {
         showTips="The amount of slots for proposed blocks on the MXCL1 smart contract. When this number is 0, no blocks can be proposed until a block has been proven."
         tap={onTap}
       />
-      <StatsItem
+      {/* <StatsItem
         icon={blockIcon}
         title="Last Verified Block ID"
         value={status.latestVerifiedId}
         showTips="The most recently verified Layer 2 block on the MXCL1 smart contract."
+        tap={onTap}
+      /> */}
+      
+      <StatsItem
+        icon={flameIcon}
+        title="Total Burnt MXC"
+        value={burnsTotal}
+        showTips="Total MXC burnt amounts."
         tap={onTap}
       />
       <StatsItem

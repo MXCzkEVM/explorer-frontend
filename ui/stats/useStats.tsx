@@ -25,7 +25,6 @@ export default function useStats() {
   // ==========hard code============
   let newsec:any = data?.sections.map(item=>{
     item.charts.map(chartItem=>{
-      console.log(chartItem)
       chartItem.description = chartItem.description.replace("ETH","MXC")
       if(chartItem.units=="ETH") {
         chartItem.units = "MXC"

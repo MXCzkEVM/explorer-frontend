@@ -26,6 +26,7 @@ const networks: any = {
         format: 'png'
       },
       etherscan: "http://wannsee-explorer.mxc.com",
+      graphNode: "https://mxc-graph-node.mxc.com"
   },
   "18686": {
     chainId: 18686,
@@ -48,8 +49,10 @@ const networks: any = {
         format: 'png'
       },
       etherscan: "http://explorer.mxc.com",
+      graphNode: "https://mxc-graph.mxc.com"
   },
 }
 
 export const NETWORK = networks[CHAIN_ID]
-export const PROVIDER = new ethers.providers.JsonRpcProvider(networks[CHAIN_ID].rpc_url);
+export const PROVIDER = new ethers.providers.JsonRpcProvider(NETWORK.rpc_url);
+export const graphNode = NETWORK.graphNode

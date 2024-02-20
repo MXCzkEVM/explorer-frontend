@@ -8,6 +8,7 @@ import ChartsWidgetsList from '../stats/ChartsWidgetsList';
 import NumberWidgetsList from '../stats/NumberWidgetsList';
 import StatsFilters from '../stats/StatsFilters';
 import useStats from '../stats/useStats';
+import BurnChart from '../stats/BurnChart'
 
 const Stats = () => {
   const {
@@ -30,6 +31,8 @@ const Stats = () => {
       <Box mb={{ base: 6, sm: 8 }}>
         <NumberWidgetsList/>
       </Box>
+
+      <BurnChart />
 
       <Box mb={{ base: 6, sm: 8 }}>
         <StatsFilters
