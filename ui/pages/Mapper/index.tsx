@@ -76,17 +76,17 @@ const Mapper = () => {
     useEffect(() => {
         const fetchData = async () => {
             await dataInit();
-
             // get hexagon bind name => mapper data
-            let hexagonsName: any = await getMep1002HexagonName();
 
             // get hexagon data => mapper data
             let getVertex = getGeoHex(await getGeoHexagon());
             setVertexs(getVertex);
             addToGeoJsonKey(geoJsonKey + 1);
+            addToGeoCenterJsonKey(geoJsonCenterKey + 1);
+
+            let hexagonsName: any = await getMep1002HexagonName();
 
             setH3WrapName(hexagonsName);
-            addToGeoCenterJsonKey(geoJsonCenterKey + 1);
 
             // get 1004 cache
             await getMep1004();
