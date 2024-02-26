@@ -83,11 +83,12 @@ const Mapper = () => {
             setVertexs(getVertex);
             addToGeoJsonKey(geoJsonKey + 1);
             addToGeoCenterJsonKey(geoJsonCenterKey + 1);
+            initPageHexagon(getVertex)
 
             let hexagonsName: any = await getMep1002HexagonName();
 
             setH3WrapName(hexagonsName);
-
+            
             // get 1004 cache
             await getMep1004();
         };
@@ -135,7 +136,7 @@ const Mapper = () => {
         fetchData();
     }, [query]);
 
-    useEffect(() => {
+    function initPageHexagon(vertex: any[]) {
       if (!vertex.length || !router.query.hexagon)
         return
       const hexagon = router.query.hexagon as string
@@ -147,7 +148,7 @@ const Mapper = () => {
         const [lat, lng] = cellToLatLng(hexagon);
         onClickMap({ latlng: {lat, lng} })
       }
-    }, [vertex, router.query.hexagon])
+    }
 
     function onClickMap(e: any) {
       let nodeName = e.originalEvent?.target?.nodeName;
