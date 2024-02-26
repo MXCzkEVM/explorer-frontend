@@ -114,27 +114,27 @@ const Mapper = () => {
         };
     }, []);
 
-    useEffect(() => {
-        // load the query, if have domain should flyto
-        let get_hexId = query.hexid && query.hexid.toLowerCase();
-        let get_mns = query.mns && query.mns.toLowerCase();
+    // useEffect(() => {
+    //     // load the query, if have domain should flyto
+    //     let get_hexId = query.hexid && query.hexid.toLowerCase();
+    //     let get_mns = query.mns && query.mns.toLowerCase();
 
-        const fetchData = async () => {
-            let { hexId2loc, ens2loc } = await getDataMap();
-            // console.log(get_hexId, "get_hexId");
-            // console.log(hexId2loc, "hexId2loc");
-            // console.log(hexId2loc[get_hexId], 999);
-            if (Map && get_hexId && hexId2loc[get_hexId]) {
-                Map.flyTo(hexId2loc[get_hexId], 12);
-            }
+    //     const fetchData = async () => {
+    //         let { hexId2loc, ens2loc } = await getDataMap();
+    //         // console.log(get_hexId, "get_hexId");
+    //         // console.log(hexId2loc, "hexId2loc");
+    //         // console.log(hexId2loc[get_hexId], 999);
+    //         if (Map && get_hexId && hexId2loc[get_hexId]) {
+    //             Map.flyTo(hexId2loc[get_hexId], 12);
+    //         }
 
-            if (Map && get_mns && ens2loc[get_mns]) {
-                Map.flyTo(ens2loc[get_mns], 12);
-            }
-        };
+    //         if (Map && get_mns && ens2loc[get_mns]) {
+    //             Map.flyTo(ens2loc[get_mns], 12);
+    //         }
+    //     };
 
-        fetchData();
-    }, [query]);
+    //     fetchData();
+    // }, [query]);
 
     function initPageHexagon(vertex: any[]) {
       if (!vertex.length || !router.query.hexagon)

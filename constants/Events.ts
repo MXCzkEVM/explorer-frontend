@@ -9,7 +9,6 @@ import { PROVIDER } from './Network'
 export const mep1004NewLocationProofEvent = async() => {
     const saveName = 'MEP1004NewLocationProof'
     const blockName = 'MEP1004NewLocationProof__blocksNum'
-
     let blockStart: number = await localforage.getItem(blockName) || CONTRACTS_MAP.MEP1004NewLocationProofBlockNumber
     let mep1004 = instanceMep1004()
     let latestBlock = await PROVIDER.getBlockNumber();

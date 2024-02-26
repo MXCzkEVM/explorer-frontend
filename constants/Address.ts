@@ -35,7 +35,7 @@ const contracts: any = {
         MEP1004BlockNumber: 370,
         MEP1004InsertToMEP1002SlotBlockNumber: 649235,
         MEP1004RemoveFromMEP1002SlotBlockNumber: 649235,
-        MEP1004NewLocationProofBlockNumber: 650598
+        MEP1004NewLocationProofBlockNumber: 1718903
     },
 }
 
