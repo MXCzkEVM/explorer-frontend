@@ -13,7 +13,7 @@ function generateCspPolicy() {
     descriptors.monaco(),
     descriptors.sentry(),
     descriptors.walletConnect(),
-    descriptors.wannsee(),
+    descriptors.moonchain(),
   );
 
   return makePolicyString(policyDescriptor);

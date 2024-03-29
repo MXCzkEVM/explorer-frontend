@@ -26,10 +26,10 @@
     "test:pw:ci": "yarn test:pw --project=$PW_PROJECT",
     "test:jest": "jest",
     "test:jest:watch": "jest --watch",
-    "dev:wannsee": "./node_modules/.bin/dotenv -e ./configs/envs/.env.wannsee -e ./configs/envs/.env.secrets -- bash -c 'next dev -- -p \"$NEXT_PUBLIC_APP_PORT\"' | ./node_modules/.bin/pino-pretty",
+    "dev:geneva": "./node_modules/.bin/dotenv -e ./configs/envs/.env.geneva -e ./configs/envs/.env.secrets -- bash -c 'next dev -- -p \"$NEXT_PUBLIC_APP_PORT\"' | ./node_modules/.bin/pino-pretty",
     "dev:wannsee_mainnet": "./node_modules/.bin/dotenv -e ./configs/envs/.env.wannsee_mainnet -e ./configs/envs/.env.secrets -- bash -c 'next dev -- -p \"$NEXT_PUBLIC_APP_PORT\"' | ./node_modules/.bin/pino-pretty",
     "vercel:mainnet": "cp vercel.mainnet.json .vercel/project.json && cp configs/envs/.env.wannsee_mainnet .env && vercel --prod",
-    "vercel:testnet": "cp vercel.testnet.json .vercel/project.json && cp configs/envs/.env.wannsee .env && vercel --prod"
+    "vercel:testnet": "cp vercel.testnet.json .vercel/project.json && cp configs/envs/.env.geneva .env && vercel --prod"
   },
   "dependencies": {
     "@chakra-ui/react": "2.7.1",
