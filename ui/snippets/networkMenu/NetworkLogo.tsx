@@ -55,62 +55,15 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
     <Box
       as="a"
       href={ route({ pathname: '/' }) }
-      width={{ base: 'auto', lg: isCollapsed === false ? '120px' : '30px', xl: isCollapsed ? '30px' : '120px' }}
-      height={{ base: '20px', lg: isCollapsed === false ? '20px' : '30px', xl: isCollapsed ? '30px' : '20px' }}
+      width={{ base: 'auto', lg: isCollapsed === false ? '165px' : '30px', xl: isCollapsed ? '30px' : '165px' }}
+      height={{ base: '35px', lg: isCollapsed === false ? '35px' : '30px', xl: isCollapsed ? '30px' : '35px' }}
       display="inline-flex"
       overflow="hidden"
       onClick={ onClick }
       flexShrink={ 0 }
       aria-label="Link to main page"
     >
-      { /* big logo */ }
-      {/* <Image
-        w="auto"
-        h="100%"
-        src={ logoSrc }
-        alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback isCollapsed={ isCollapsed }/> }
-        display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
-        style={ logoStyle }
-      /> */}
-      <Image
-        w="auto"
-        h="100%"
-        src={mxcLogo.src}
-        alt={ `${ config.chain.name } network logo` }
-        fallback={<LogoFallback isCollapsed={isCollapsed} />}
-        display={{
-          base: 'block',
-          lg: isCollapsed === false ? 'block' : 'none',
-          xl: isCollapsed ? 'none' : 'block',
-        }}
-      />
-
-      { /* small logo */ }
-      {/* <Image
-        w="auto"
-        h="100%"
-        src={ iconSrc }
-        alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback isCollapsed={ isCollapsed } isSmall/> }
-        display={{ base: 'none', lg: isCollapsed === false ? 'none' : 'block', xl: isCollapsed ? 'block' : 'none' }}
-        style={ iconStyle }
-      /> */}
-      <Image
-        w="auto"
-        h="100%"
-        src={mxcLogo.src}
-        alt={ `${ config.chain.name } network logo` }
-        fallback={<LogoFallback isCollapsed={isCollapsed} isSmall />}
-        display={{
-          base: 'none',
-          lg: isCollapsed === false ? 'none' : 'block',
-          xl: isCollapsed ? 'block' : 'none',
-        }}
-      />
-      <Text fontSize="sm" fontFamily="body" ml="1">
-        MXC
-      </Text>
+      <img style={{width: '100%', objectFit: 'cover'}} src="/logo-full.png" />
     </Box>
   );
 };
