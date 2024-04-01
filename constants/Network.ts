@@ -28,6 +28,30 @@ const networks: any = {
       etherscan: "http://wannsee-explorer.mxc.com",
       graphNode: "https://mxc-graph-node.mxc.com"
   },
+  "5167004": {
+    chainId: 5167003,
+    rpc: ['https://geneva-rpc.moonchain.com'],
+    rpc_url: "https://geneva-rpc.moonchain.com",
+    // rpc_url: "http://144.202.111.198:8545",
+    nativeCurrency: {
+      decimals: 18,
+      name: "MXC Token",
+      symbol: "MXC",
+    },
+    shortName: "MoonChain",
+    slug: "moonchain",
+    testnet: true,
+    chain: "Moonchain",
+    name: "Moonchain Geneva Testnet",
+    icon: {
+      url: "https://explorer.moonchain.com/_next/static/media/mxc-white.77a42693.png",
+      height: 512,
+      width: 512,
+      format: 'png'
+    },
+    etherscan: "http://geneva-explorer.moonchain.com",
+    graphNode: "https://geneva-graph-node.moonchain.com"
+  },
   "18686": {
     chainId: 18686,
     rpc: ["https://rpc.mxc.com"],

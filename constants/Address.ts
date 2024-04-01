@@ -37,6 +37,20 @@ const contracts: any = {
         MEP1004RemoveFromMEP1002SlotBlockNumber: 649235,
         MEP1004NewLocationProofBlockNumber: 1718903
     },
+    5167004: {
+        collectBase: 'https://geneva-nft.moonchain.com',
+
+        MEP1002Token: "0xFf3159E5779C61f5d2965305DC1b9E8a1E16a39c",
+        MEP1002BlockNumber: 356,
+        MEP1002TokenUpdateNameStart: 645464,
+        MEP1002TransferStart: 61546,
+
+        MEP1004Token: "0x5CE293229a794AF03Ec3c95Cfba6b1058D558026",
+        MEP1004BlockNumber: 370,
+        MEP1004InsertToMEP1002SlotBlockNumber: 649235,
+        MEP1004RemoveFromMEP1002SlotBlockNumber: 649235,
+        MEP1004NewLocationProofBlockNumber: 1718903
+    },
 }
 
 export const ABI = {

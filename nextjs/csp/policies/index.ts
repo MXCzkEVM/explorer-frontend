@@ -8,4 +8,4 @@ export { mixpanel } from './mixpanel';
 export { monaco } from './monaco';
 export { sentry } from './sentry';
 export { walletConnect } from './walletConnect';
-export { wannsee } from './wannsee';
+export { moonchain } from './moonchain';
