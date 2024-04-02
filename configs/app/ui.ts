@@ -7,7 +7,7 @@ import { getEnvValue, parseEnvJson } from './utils';
 
 // eslint-disable-next-line max-len
 // const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, rgba(183, 148, 244, 0.8) 0%, rgba(0, 163, 196, 0.8) 100%), var(--chakra-colors-blue-400)';
-const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, #8F2F79 0%, #4310B4 100%), var(--chakra-colors-blue-400)';
+const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, #2196F3 0%, #292929 100%), var(--chakra-colors-blue-400)';
 
 const UI = Object.freeze({
   document: {
