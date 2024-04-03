@@ -45,17 +45,8 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link href="/static/leaflet.css" rel="stylesheet" />
-          {/* <link rel="icon" sizes="32x32" type="image/png" href="/static/favicon-32x32.png"/>
-          <link rel="icon" sizes="16x16" type="image/png"href="/static/favicon-16x16.png"/> */}
-          <link
-            rel="icon"
-            sizes="32x32"
-            type="image/png"
-            href="/static/mxc-favicon.png"
-          />
+          <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/MXCzkEVM/metadata/main/logo-circle.svg" />
 
-          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png"/>
-          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5"/>
           {/* <meta property="og:title" content="Blockscout: A block explorer designed for a decentralized world."/> */}
           <meta property="og:title" content={config.UI.document.title}/>
           <meta
