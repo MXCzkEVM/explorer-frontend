@@ -112,7 +112,7 @@ const Footer = () => {
         </Flex>
         <Box mt={{ base: 5, lg: '44px' }}>
           {/* <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link> */}
-          <Link fontSize="xs" href="https://www.mxc.org">https://www.mxc.org</Link>
+          <Link fontSize="xs" href="https://www.moonchain.com">https://www.moonchain.com</Link>
         </Box>
         <Text mt={ 3 } maxW={{ base: 'unset', lg: '470px' }} fontSize="xs">
             {/* Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks. */}
