@@ -38,7 +38,7 @@ const networks: any = {
       name: "MXC Token",
       symbol: "MXC",
     },
-    shortName: "MoonChain",
+    shortName: "Moonchain",
     slug: "moonchain",
     testnet: true,
     chain: "Moonchain",
