@@ -62,8 +62,9 @@ const NetworkLogo = ({ isCollapsed, onClick }: Props) => {
       onClick={ onClick }
       flexShrink={ 0 }
       aria-label="Link to main page"
+      justifyContent="center"
     >
-      <img style={{width: '100%', objectFit: 'cover'}} src="/logo-full.png" />
+      <img style={{width: '100%', objectFit: 'cover', maxWidth: '158px'}} src="/logo-full.png" />
     </Box>
   );
 };
