@@ -23,33 +23,19 @@ const contracts: any = {
         MEP1004RemoveFromMEP1002SlotBlockNumber: 3719,
         MEP1004NewLocationProofBlockNumber: 3719
     },
-    5167003: {
-        collectBase: 'https://wannsee-nft.mxc.com',
-
-        MEP1002Token: "0xFf3159E5779C61f5d2965305DC1b9E8a1E16a39c",
-        MEP1002BlockNumber: 356,
-        MEP1002TokenUpdateNameStart: 645464,
-        MEP1002TransferStart: 61546,
-
-        MEP1004Token: "0x5CE293229a794AF03Ec3c95Cfba6b1058D558026",
-        MEP1004BlockNumber: 370,
-        MEP1004InsertToMEP1002SlotBlockNumber: 649235,
-        MEP1004RemoveFromMEP1002SlotBlockNumber: 649235,
-        MEP1004NewLocationProofBlockNumber: 1718903
-    },
     5167004: {
         collectBase: 'https://geneva-nft.moonchain.com',
 
-        MEP1002Token: "0xFf3159E5779C61f5d2965305DC1b9E8a1E16a39c",
-        MEP1002BlockNumber: 356,
-        MEP1002TokenUpdateNameStart: 645464,
-        MEP1002TransferStart: 61546,
+        MEP1002Token: "0x1964F08f56b79051fB3AE9a2C4d8D92A059b1237",
+        MEP1002BlockNumber: 0,
+        MEP1002TokenUpdateNameStart: 0,
+        MEP1002TransferStart: 0,
 
-        MEP1004Token: "0x5CE293229a794AF03Ec3c95Cfba6b1058D558026",
-        MEP1004BlockNumber: 370,
-        MEP1004InsertToMEP1002SlotBlockNumber: 649235,
-        MEP1004RemoveFromMEP1002SlotBlockNumber: 649235,
-        MEP1004NewLocationProofBlockNumber: 1718903
+        MEP1004Token: "0x0D589F5EeDF70e17F053CBb93760Db7E418603F6",
+        MEP1004BlockNumber: 0,
+        MEP1004InsertToMEP1002SlotBlockNumber: 0,
+        MEP1004RemoveFromMEP1002SlotBlockNumber: 0,
+        MEP1004NewLocationProofBlockNumber: 0
     },
 }
 
