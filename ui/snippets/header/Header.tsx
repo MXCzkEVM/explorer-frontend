@@ -32,7 +32,7 @@ const Header = ({ isHomePage, renderSearchBar }: Props) => {
           paddingX={ 4 }
           paddingY={ 2 }
           bgColor={ bgColor }
-          width="100%"
+          width="100vw"
           alignItems="center"
           justifyContent="space-between"
           zIndex="sticky2"
