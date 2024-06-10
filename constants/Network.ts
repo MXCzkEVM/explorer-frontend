@@ -37,19 +37,19 @@ const networks: any = {
         name: "MXC Token",
         symbol: "MXC",
       },
-      shortName: "zkEVM Mainnet",
-      slug: "zkEVM Mainnet",
+      shortName: "Moonchain Mainnet",
+      slug: "Moonchain Mainnet",
       testnet: true,
-      chain: "Wannsee",
-      name: "zkEVM Mainnet",
+      chain: "Moonchain",
+      name: "Moonchain Mainnet",
       icon: {
-        url: "https://wannsee-bridge.mxc.com/assets/mxc.d04bb8f6.png",
+        url: "https://geneva-bridge.moonchain.com/assets/mxc.d04bb8f6.png",
         height: 512,
         width: 512,
         format: 'png'
       },
-      etherscan: "http://explorer.mxc.com",
-      graphNode: "https://mxc-graph.mxc.com"
+      etherscan: "http://explorer.moonchain.com",
+      graphNode: "https://graph-node.moonchain.com"
   },
 }
 
